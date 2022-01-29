@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+}
+
+.h1 {
+  padding: 3rem;
+}
+
+.btn {
+  padding: .5em 2em;
+  margin-left: 1rem;
+}
+
+li {
+  padding: .5rem 0;
+}
+/*# sourceMappingURL=main.css.map */
