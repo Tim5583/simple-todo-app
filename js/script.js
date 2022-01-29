@@ -28,8 +28,8 @@ saveBtn.addEventListener("click", () => {
     if (note.value) {
         paragraph.innerText = note.value;
         li.append(paragraph);
-        buttonDiv.append(deleteBtn);
         buttonDiv.append(doneBtn);
+        buttonDiv.append(deleteBtn);
         li.append(buttonDiv);
         listList.append(li);
         note.value = null;

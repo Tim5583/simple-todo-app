@@ -12,6 +12,8 @@ body {
 .container {
   padding: 2rem;
   width: 100%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .header {
@@ -27,6 +29,8 @@ body {
   width: 90%;
   display: block;
   margin: auto;
+  text-align: center;
+  caret-color: #6b6b6b;
 }
 
 .take-note input[type=button] {
@@ -41,6 +45,11 @@ body {
 .btn {
   padding: .5em 2em;
   margin-left: 1rem;
+  border: none;
+}
+
+.btn:hover {
+  cursor: pointer;
 }
 
 li {
@@ -61,5 +70,25 @@ li div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+li .delete {
+  background-color: rgba(255, 0, 0, 0.624);
+}
+
+li .done {
+  background-color: rgba(0, 128, 0, 0.583);
+}
+
+@media (max-width: 600px) {
+  li {
+    display: block;
+  }
+  li p, li div {
+    display: block;
+  }
+  li p {
+    margin-bottom: 1rem;
+  }
 }
 /*# sourceMappingURL=main.css.map */

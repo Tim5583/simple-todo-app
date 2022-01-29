@@ -11,6 +11,8 @@ body {
 .container { 
     padding: 2rem;
     width: 100%;
+    max-width: 1200px;
+    margin: auto;
 }
 
 
@@ -26,6 +28,8 @@ body {
         width: 90%;
         display: block;
         margin: auto;
+        text-align: center;
+        caret-color: rgb(107, 107, 107);
     }
 
     input[type = button] {
@@ -41,6 +45,11 @@ body {
 .btn {
     padding: .5em 2em;
     margin-left: 1rem;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 li {
@@ -56,4 +65,26 @@ li {
         display: flex;
     }
 
+    .delete {
+        background-color: rgba(255, 0, 0, 0.624);
+    }
+
+    .done {
+        background-color: rgba(0, 128, 0, 0.583);
+    }
+
+}
+
+@media (max-width: 600px) {
+    li {
+        display: block;
+
+        p, div {
+            display: block;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+    }
 }
