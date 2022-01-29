@@ -3,13 +3,13 @@ let current_id = 0;
 const note = document.getElementById("note");
 const saveBtn = document.getElementById("saveBtn");
 const listList = document.getElementById("list");
-let deleteBtns = document.querySelectorAll(".delete");
+
 
 saveBtn.addEventListener("click", () => {
     const li = document.createElement("li");
+    const paragraph = document.createElement("p");
     const deleteBtn = document.createElement("button");
     const doneBtn = document.createElement("button");
-    const noteText = document.createTextNode(note.value);
     const buttonDiv = document.createElement("div");
     
     li.id = `item${current_id}`
@@ -18,43 +18,30 @@ saveBtn.addEventListener("click", () => {
     deleteBtn.innerText = "Delete";
     deleteBtn.value = "Delete";
     deleteBtn.setAttribute("class", "delete btn");
-    deleteBtn.setAttribute("onclick", "deleteItem()");
-    console.log(deleteBtn);
+    deleteBtn.setAttribute("onclick", "deleteItem(this)");
 
     doneBtn.innerText = "Done";
     doneBtn.value = "Done";
-    doneBtn.setAttribute("class", "done btn")
+    doneBtn.setAttribute("class", "done btn");
+    doneBtn.setAttribute("onclick", "doneItem(this)");
 
     if (note.value) {
-        li.append(noteText);
+        paragraph.innerText = note.value;
+        li.append(paragraph);
         buttonDiv.append(deleteBtn);
         buttonDiv.append(doneBtn);
         li.append(buttonDiv);
         listList.append(li);
-        deleteBtns = document.querySelectorAll(".delete");
-
-        deleteBtns.forEach((item) => {
-            item.addEventListener("click", (e) => {
-                console.log(e.target);
-            })
-        })
+        note.value = null;
     }
-       
-    // deleteBtns.forEach((btn) => {
-    //     btn.addEventListener("click", (e) => {
-    //         const currentBtnId = e.target.parentElement.parentElement.id;
-    //         if (currentBtnId) {
-    //             console.log(currentBtnId)
-    //             document.getElementById(currentBtnId).remove();
-    //             deleteBtns = document.querySelectorAll(".delete");
-    //             console.log(deleteBtns)
-    //         }
-    //     })
-    // })
 });
 
+function deleteItem(e) {
+    e.parentElement.parentElement.remove();
+}
 
-
-
-
-// console.log(document.getElementById("item2").previousElementSibling.firstElementChild.innerText)
+function doneItem(e) {
+    console.log(e.parentElement.parentElement);
+    e.parentElement.parentElement.firstElementChild.style.textDecoration = "line-through";
+    e.parentElement.parentElement.style.opacity = "0.5";
+}
