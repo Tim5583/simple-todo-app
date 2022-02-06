@@ -3,7 +3,15 @@ let current_id = 0;
 const note = document.getElementById("note");
 const saveBtn = document.getElementById("saveBtn");
 const listList = document.getElementById("list");
+let todos = []
 
+class Note {
+    constructor(id, note, isDone) {
+        this.id = id;
+        this.note = note;
+        this.isDone = isDone;
+    }
+}
 
 saveBtn.addEventListener("click", () => {
     const li = document.createElement("li");
@@ -12,8 +20,7 @@ saveBtn.addEventListener("click", () => {
     const doneBtn = document.createElement("button");
     const buttonDiv = document.createElement("div");
     
-    li.id = `item${current_id}`
-    current_id++;
+    li.id = current_id;
     
     deleteBtn.innerText = "Delete";
     deleteBtn.value = "Delete";
@@ -26,15 +33,23 @@ saveBtn.addEventListener("click", () => {
     doneBtn.setAttribute("onclick", "doneItem(this)");
 
     if (note.value) {
-        paragraph.innerText = note.value;
+        noteValue = note.value;
+        paragraph.innerText = noteValue;
         li.append(paragraph);
         buttonDiv.append(doneBtn);
         buttonDiv.append(deleteBtn);
         li.append(buttonDiv);
         listList.append(li);
         note.value = null;
+        newTodo = new Note(current_id, noteValue, false);
+        todos.push(newTodo);
+        current_id++;
+        localStorage.setItem("todo", JSON.stringify(todos));
+        console.log(todos);
+        console.log(localStorage.getItem("todo"));
     }
 });
+
 
 function deleteItem(e) {
     e.parentElement.parentElement.remove();
